@@ -286,6 +286,10 @@ set(TEST_SRC_FILES
            test/StormTest.cpp
 )
 
+set(MAIN_SRC_FILES
+           test/StormMain.cpp
+)
+
 add_definitions(-D_7ZIP_ST -DBZ_STRICT_ANSI)
 set(LINK_LIBS)
 
@@ -397,4 +401,11 @@ if(STORM_BUILD_TESTS)
     target_link_libraries(StormLib_test ${LIBRARY_NAME})
     install(TARGETS StormLib_test RUNTIME DESTINATION bin)
 endif()
+
+if(STORM_BUILD_MAIN)
+    add_executable(StormLib_main ${MAIN_SRC_FILES})
+    target_link_libraries(StormLib_main ${LIBRARY_NAME})
+    install(TARGETS StormLib_main RUNTIME DESTINATION bin)
+endif()
+
 
