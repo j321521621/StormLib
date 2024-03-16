@@ -40,10 +40,15 @@ int _tmain(int argc, TCHAR * argv[])
                         outpath[i] = '/';
                     }
                 }
-                if(!SFileExtractFile(hMpq, sf.cFileName, outpath, 0)){
-                    printf("extract failed %s\n", outpath);
+                if(SFileExtractFile(hMpq, sf.cFileName, outpath, 0)){
+                    printf("extract success %s\n", sf.cFileName);
+                }else{
+                    printf("extract failed %s\n", sf.cFileName);
                     return -1;
                 }
+            }
+            else{
+                printf("%s\n", sf.cFileName);
             }
         }
         while(SFileFindNextFile(hFile, &sf));

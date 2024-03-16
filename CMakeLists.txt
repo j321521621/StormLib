@@ -287,7 +287,7 @@ set(TEST_SRC_FILES
 )
 
 set(MAIN_SRC_FILES
-           test/StormMain.cpp
+           test/UnMpq.cpp
 )
 
 add_definitions(-D_7ZIP_ST -DBZ_STRICT_ANSI)
@@ -396,16 +396,12 @@ if (NOT STORM_SKIP_INSTALL)
         INCLUDE(CPack)
 endif()
 
-if(STORM_BUILD_TESTS)
-    add_executable(StormLib_test ${TEST_SRC_FILES})
-    target_link_libraries(StormLib_test ${LIBRARY_NAME})
-    install(TARGETS StormLib_test RUNTIME DESTINATION bin)
-endif()
+add_executable(StormLib_test ${TEST_SRC_FILES})
+target_link_libraries(StormLib_test ${LIBRARY_NAME})
+install(TARGETS StormLib_test RUNTIME DESTINATION bin)
 
-if(STORM_BUILD_MAIN)
-    add_executable(StormLib_main ${MAIN_SRC_FILES})
-    target_link_libraries(StormLib_main ${LIBRARY_NAME})
-    install(TARGETS StormLib_main RUNTIME DESTINATION bin)
-endif()
+add_executable(unmpq ${MAIN_SRC_FILES})
+target_link_libraries(unmpq ${LIBRARY_NAME})
+install(TARGETS unmpq RUNTIME DESTINATION bin)
 
 
